@@ -13,7 +13,7 @@ export default tseslint.config(
       'no-undef': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
-      '@typescript-eslint/no-var-requires': 'off',
+      // '@typescript-eslint/no-var-requires': 'off',
     },
   },
   {
