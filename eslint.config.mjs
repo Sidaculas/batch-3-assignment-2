@@ -1,6 +1,7 @@
 // @ts-check
 
 import eslint from '@eslint/js'
+
 import tseslint from 'typescript-eslint'
 import globals from 'globals'
 
@@ -13,7 +14,7 @@ export default tseslint.config(
       'no-undef': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
-      // '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/no-var-requires': 'off',
     },
   },
   {
