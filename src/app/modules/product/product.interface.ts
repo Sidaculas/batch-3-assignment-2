@@ -1,14 +1,14 @@
-interface Variant {
+export interface Variant {
   type: string
   value: string
 }
 
-interface Inventory {
+export interface Inventory {
   quantity: number
   instock: boolean
 }
 
-export interface Product {
+export interface TProduct {
   name: string
   description: string
   price: number
