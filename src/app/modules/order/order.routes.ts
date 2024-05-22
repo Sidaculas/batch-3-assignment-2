@@ -1,10 +1,8 @@
 import express from 'express'
 import { OrderController } from './order.controller'
-import validation from './order.middleware'
-import { createOrderSchema } from './order.validation'
 
 const router = express.Router()
 
-router.post('/', validation(createOrderSchema), OrderController.createOrder)
+router.post('/', OrderController.createOrder)
 
 export const OrderRoutes = router
