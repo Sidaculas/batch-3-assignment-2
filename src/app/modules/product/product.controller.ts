@@ -30,7 +30,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: 'Products retrieved successfully!',
+      message: 'Products fetched successfully!',
       data: allProducts,
     })
   } catch (error: any) {
@@ -42,7 +42,28 @@ const getAllProducts = async (req: Request, res: Response) => {
   }
 }
 
+// getting a product form the db
+const getAProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params
+    const result = await ProductServices.getAProductFromDB(productId)
+
+    res.status(200).json({
+      success: true,
+      message: 'Product fetched successfully!',
+      data: result,
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while fetching the product.',
+      error: error.message,
+    })
+  }
+}
+
 export const ProductController = {
   createProduct,
   getAllProducts,
+  getAProduct,
 }

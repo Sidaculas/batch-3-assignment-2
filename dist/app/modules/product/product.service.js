@@ -17,11 +17,18 @@ const createProductIntoDB = (product) => __awaiter(void 0, void 0, void 0, funct
     const newProduct = product_model_1.ProductModel.create(product);
     return newProduct;
 });
+//this function will get all products from the db
 const getAllProductsFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield product_model_1.ProductModel.find();
+    return result;
+});
+// this function will find a product based on id
+const getAProductFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield product_model_1.ProductModel.findOne({ id });
     return result;
 });
 exports.ProductServices = {
     createProductIntoDB,
     getAllProductsFromDB,
+    getAProductFromDB,
 };

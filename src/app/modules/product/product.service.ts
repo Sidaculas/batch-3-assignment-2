@@ -9,8 +9,17 @@ const createProductIntoDB = async (product: TProduct) => {
   return newProduct
 }
 
+//this function will get all products from the db
 const getAllProductsFromDB = async () => {
   const result = await ProductModel.find()
+
+  return result
+}
+
+// this function will find a product based on id
+
+const getAProductFromDB = async (id: string) => {
+  const result = await ProductModel.findOne({ id })
 
   return result
 }
@@ -18,4 +27,5 @@ const getAllProductsFromDB = async () => {
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
+  getAProductFromDB,
 }

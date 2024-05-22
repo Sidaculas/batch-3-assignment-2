@@ -38,7 +38,7 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const allProducts = yield product_service_1.ProductServices.getAllProductsFromDB();
         res.status(200).json({
             success: true,
-            message: 'Products retrieved successfully!',
+            message: 'Products fetched successfully!',
             data: allProducts,
         });
     }
@@ -50,7 +50,27 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 });
+// getting a product form the db
+const getAProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId } = req.params;
+        const result = yield product_service_1.ProductServices.getAProductFromDB(productId);
+        res.status(200).json({
+            success: true,
+            message: 'Product fetched successfully!',
+            data: result,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while fetching the product.',
+            error: error.message,
+        });
+    }
+});
 exports.ProductController = {
     createProduct,
     getAllProducts,
+    getAProduct,
 };
