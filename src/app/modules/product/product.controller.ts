@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { ProductServices } from './product.service'
+import { ZodProductSchema } from './product.validation'
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -7,7 +8,10 @@ const createProduct = async (req: Request, res: Response) => {
     // rather made another file named product.service.ts to maintain reusability
     // console.log(req.body)
     const productData = req.body.products
-    const saveProduct = await ProductServices.createProductIntoDB(productData)
+
+    const zodParsedData = ZodProductSchema.parse(productData)
+
+    const saveProduct = await ProductServices.createProductIntoDB(zodParsedData)
 
     res.status(200).json({
       success: true,
