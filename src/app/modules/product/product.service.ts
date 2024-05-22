@@ -24,8 +24,35 @@ const getAProductFromDB = async (id: string) => {
   return result
 }
 
+// this function will update the product
+
+const updateProductInDB = async (
+  id: string,
+  productData: Partial<TProduct>,
+) => {
+  try {
+    return await ProductModel.findByIdAndUpdate(id, productData)
+  } catch (error) {
+    throw new Error('Failed to update product')
+  }
+}
+
+// this function will delete a product from DB
+const deleteProductInDB = async (
+  id: string,
+  productData: Partial<TProduct>,
+) => {
+  try {
+    return await ProductModel.findByIdAndDelete(id, productData)
+  } catch (error) {
+    throw new Error('Failed to update product')
+  }
+}
+
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
   getAProductFromDB,
+  updateProductInDB,
+  deleteProductInDB,
 }

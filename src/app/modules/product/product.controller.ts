@@ -46,6 +46,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 const getAProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params
+
     const result = await ProductServices.getAProductFromDB(productId)
 
     res.status(200).json({
@@ -62,8 +63,59 @@ const getAProduct = async (req: Request, res: Response) => {
   }
 }
 
+// update product by id
+
+const updateAProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params
+    const productData = req.body.products
+    const updateProduct = await ProductServices.updateProductInDB(
+      productId,
+      productData,
+    )
+
+    res.status(200).json({
+      success: true,
+      message: 'Product updated successfully!',
+      data: updateProduct,
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while updating the product.',
+      error: error.message,
+    })
+  }
+}
+
+// deleting a product by id
+const deleteAProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params
+    const productData = req.body.products
+    const updateProduct = await ProductServices.deleteProductInDB(
+      productId,
+      productData,
+    )
+
+    res.status(200).json({
+      success: true,
+      message: 'Product deleted successfully!',
+      data: updateProduct,
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while deleting the product.',
+      error: error.message,
+    })
+  }
+}
+
 export const ProductController = {
   createProduct,
   getAllProducts,
   getAProduct,
+  updateAProduct,
+  deleteAProduct,
 }

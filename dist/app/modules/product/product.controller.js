@@ -69,8 +69,50 @@ const getAProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
+// update product by id
+const updateAProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId } = req.params;
+        const productData = req.body.products;
+        const updateProduct = yield product_service_1.ProductServices.updateProductInDB(productId, productData);
+        res.status(200).json({
+            success: true,
+            message: 'Product updated successfully!',
+            data: updateProduct,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while updating the product.',
+            error: error.message,
+        });
+    }
+});
+// deleting a product by id
+const deleteAProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId } = req.params;
+        const productData = req.body.products;
+        const updateProduct = yield product_service_1.ProductServices.deleteProductInDB(productId, productData);
+        res.status(200).json({
+            success: true,
+            message: 'Product deleted successfully!',
+            data: updateProduct,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while deleting the product.',
+            error: error.message,
+        });
+    }
+});
 exports.ProductController = {
     createProduct,
     getAllProducts,
     getAProduct,
+    updateAProduct,
+    deleteAProduct,
 };

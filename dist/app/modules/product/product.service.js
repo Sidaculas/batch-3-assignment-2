@@ -27,8 +27,28 @@ const getAProductFromDB = (id) => __awaiter(void 0, void 0, void 0, function* ()
     const result = yield product_model_1.ProductModel.findOne({ id });
     return result;
 });
+// this function will update the product
+const updateProductInDB = (id, productData) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return yield product_model_1.ProductModel.findByIdAndUpdate(id, productData);
+    }
+    catch (error) {
+        throw new Error('Failed to update product');
+    }
+});
+// this function will delete a product from DB
+const deleteProductInDB = (id, productData) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return yield product_model_1.ProductModel.findByIdAndDelete(id, productData);
+    }
+    catch (error) {
+        throw new Error('Failed to update product');
+    }
+});
 exports.ProductServices = {
     createProductIntoDB,
     getAllProductsFromDB,
     getAProductFromDB,
+    updateProductInDB,
+    deleteProductInDB,
 };
