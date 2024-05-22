@@ -5,7 +5,7 @@ export interface Variant {
 
 export interface Inventory {
   quantity: number
-  instock: boolean
+  inStock: boolean
 }
 
 export interface TProduct {

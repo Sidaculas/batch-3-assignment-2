@@ -8,7 +8,7 @@ const VariantSchema = new mongoose_1.Schema({
 });
 const InventorySchema = new mongoose_1.Schema({
     quantity: { type: Number, required: true },
-    instock: { type: Boolean, required: true },
+    inStock: { type: Boolean, required: true },
 });
 const ProductSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
