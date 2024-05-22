@@ -12,4 +12,5 @@ router.get('/', product_controller_1.ProductController.getAllProducts);
 router.get('/:productID', product_controller_1.ProductController.getAProduct);
 router.put('/:productId', product_controller_1.ProductController.updateAProduct);
 router.delete('/:productId', product_controller_1.ProductController.deleteAProduct);
+router.get('/api/products', product_controller_1.ProductController.searchProduct);
 exports.ProductRoutes = router;

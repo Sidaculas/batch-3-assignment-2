@@ -112,10 +112,34 @@ const deleteAProduct = async (req: Request, res: Response) => {
   }
 }
 
+// searching a product
+
+const searchProduct = async (req: Request, res: Response) => {
+  try {
+    // should not put any. rather check if the term if it is string or not.
+
+    const { search }: any = req.query
+    const result = await ProductServices.searchProductInDB(search)
+
+    res.status(500).json({
+      success: true,
+      message: `Products matching search term ${search} fetched successfully!`,
+      data: result,
+    })
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while searching the product.',
+      error: error.message,
+    })
+  }
+}
+
 export const ProductController = {
   createProduct,
   getAllProducts,
   getAProduct,
   updateAProduct,
   deleteAProduct,
+  searchProduct,
 }

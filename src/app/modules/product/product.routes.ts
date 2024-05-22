@@ -13,4 +13,6 @@ router.put('/:productId', ProductController.updateAProduct)
 
 router.delete('/:productId', ProductController.deleteAProduct)
 
+router.get('/api/products', ProductController.searchProduct)
+
 export const ProductRoutes = router

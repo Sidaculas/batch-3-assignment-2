@@ -49,10 +49,24 @@ const deleteProductInDB = async (
   }
 }
 
+// this function search the db to find match
+
+const searchProductInDB = async (search: string) => {
+  return await ProductModel.find({
+    $or: [
+      { name: search },
+      { description: search },
+      { category: search },
+      { tags: search },
+    ],
+  })
+}
+
 export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
   getAProductFromDB,
   updateProductInDB,
   deleteProductInDB,
+  searchProductInDB,
 }

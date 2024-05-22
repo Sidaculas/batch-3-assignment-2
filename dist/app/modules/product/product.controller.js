@@ -109,10 +109,31 @@ const deleteAProduct = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 });
+// searching a product
+const searchProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // should not put any. rather check if the term if it is string or not.
+        const { search } = req.query;
+        const result = yield product_service_1.ProductServices.searchProductInDB(search);
+        res.status(500).json({
+            success: true,
+            message: `Products matching search term ${search} fetched successfully!`,
+            data: result,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while searching the product.',
+            error: error.message,
+        });
+    }
+});
 exports.ProductController = {
     createProduct,
     getAllProducts,
     getAProduct,
     updateAProduct,
     deleteAProduct,
+    searchProduct,
 };

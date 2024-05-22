@@ -45,10 +45,22 @@ const deleteProductInDB = (id, productData) => __awaiter(void 0, void 0, void 0,
         throw new Error('Failed to update product');
     }
 });
+// this function search the db to find match
+const searchProductInDB = (search) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield product_model_1.ProductModel.find({
+        $or: [
+            { name: search },
+            { description: search },
+            { category: search },
+            { tags: search },
+        ],
+    });
+});
 exports.ProductServices = {
     createProductIntoDB,
     getAllProductsFromDB,
     getAProductFromDB,
     updateProductInDB,
     deleteProductInDB,
+    searchProductInDB,
 };
