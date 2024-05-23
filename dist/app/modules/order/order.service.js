@@ -26,6 +26,7 @@ const createOrderInDB = (order) => __awaiter(void 0, void 0, void 0, function* (
     //updating after every valid order
     item.inventory.quantity -= order.quantity;
     item.inventory.inStock = item.inventory.quantity > 0;
+    yield item.save();
     return newOrder;
 });
 // this function will get all the orders

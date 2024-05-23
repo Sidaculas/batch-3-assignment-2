@@ -1,5 +1,4 @@
-import { NextFunction, Request, response } from 'express'
-import { AnyZodObject, Schema, z, ZodError } from 'zod'
+import { z } from 'zod'
 
 export const ZodOrderSchema = z.object({
   email: z.string().email(),

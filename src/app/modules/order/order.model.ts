@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { TOrder } from './order.interface'
 
 const OrderSchema: Schema = new Schema<TOrder>({

@@ -4,7 +4,7 @@ import { ProductRoutes } from './app/modules/product/product.routes'
 import { OrderRoutes } from './app/modules/order/order.routes'
 
 const app: Application = express()
-const port = 3000
+// const port = 3000
 
 //Parsers
 app.use(express.json())

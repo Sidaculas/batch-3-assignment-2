@@ -8,7 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const product_routes_1 = require("./app/modules/product/product.routes");
 const order_routes_1 = require("./app/modules/order/order.routes");
 const app = (0, express_1.default)();
-const port = 3000;
+// const port = 3000
 //Parsers
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());

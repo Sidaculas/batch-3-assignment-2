@@ -20,6 +20,7 @@ const createOrderInDB = async (order: TOrder) => {
   //updating after every valid order
   item.inventory.quantity -= order.quantity
   item.inventory.inStock = item.inventory.quantity > 0
+  await item.save()
 
   return newOrder
 }
