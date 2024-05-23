@@ -15,7 +15,13 @@ app.use((0, cors_1.default)());
 // application routes
 app.use('/api/products', product_routes_1.ProductRoutes);
 app.use('/api/orders', order_routes_1.OrderRoutes);
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        message: 'Route Not Found',
+    });
+});
 exports.default = app;
